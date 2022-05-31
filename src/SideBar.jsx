@@ -6,9 +6,8 @@ const SideBarStyles = {
 	flexDirection: "column",
 	alignItems: "start",
 	justifyContent: "start",
-	width: "6vw",
+	width: "9vw",
 	height: "100vh",
-	position: "absolute",
 	outline: "solid 3px #333",
 }
 

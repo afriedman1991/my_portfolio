@@ -37,10 +37,10 @@ function App() {
     setModal(<></>);
   }
   return (
-    <>
-      <SideBar iconList={icons} showModal={showModal} closeModal={closeModal}/>
+    <div style={{display: "flex"}}>
+      <SideBar iconList={icons} showModal={showModal}/>
       {modal}
-    </>
+    </div>
   );
 }
 

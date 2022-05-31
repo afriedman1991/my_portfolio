@@ -5,18 +5,22 @@ import Icon from './Icon.jsx';
 const styles = {
 	modal: {
 	  display:"flex",
-	  width:"50vw",
-	  height: "50vh",
-	  padding:"5rem",
+	  width:"75vw",
+	  height: "75vh",
 	  outline: "solid red",
-	  justifyContent: "left",
-	  alignItems: "flex-start",
+	},
+	modalContent: {
+		padding:"5rem",
+		justifyContent: "left",
+		alignItems: "flex-start",
+		width: "100vw",
 	},
 	modalContainer: {
 	  display:"flex",
 	  justifyContent: "center",
 	  alignItems: "center",
 	  height: "100vh",
+	  width: "100vw",
 	},
 	textStyle: {
 		display: "flex",
@@ -26,10 +30,10 @@ const styles = {
 	},
 	closeButtonStyle: {
 		display: "flex",
-		height: "5vh",
-		width: "3vw",
 		justifyContent: "right",
-		alignItems: "flex-start",
+		alignItems: "right",
+		height: "4vh",
+		width: "3vw",
 	}
 }
 
@@ -37,11 +41,18 @@ const Modal = function(props) {
 	return (
 		<div style={styles.modalContainer}>
 			<div style={styles.modal}>
-				{/* <img style={styles.closeButtonStyle} src="https://cdn-icons-png.flaticon.com/512/1632/1632708.png"></img> */}
-				<Icon iconSrc={props.iconSrc} projectName={props.projectName} />
-				<p>
-					{props.description}
-				</p>
+				<div style={styles.modalContent}>
+					<Icon iconSrc={props.iconSrc} projectName={props.projectName} />
+					<p>
+						{props.description}
+					</p>
+				</div>
+				<img
+					onClick={props.closeModal} 
+					style={styles.closeButtonStyle} 
+					src="https://cdn-icons-png.flaticon.com/512/1632/1632708.png"
+					alt=""
+				/>
 			</div>
 		</div>
 	)
