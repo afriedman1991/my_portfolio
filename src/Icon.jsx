@@ -21,7 +21,7 @@ const Icon = function(props) {
 			<img onClick={() => {
 				return props.showModal ? props.showModal(props.icon) : null;
 			}} style={styles.icon} alt="" src={props.iconSrc} />
-			<li style={{listStyle: "none", textAlign: "center"}}>{props.projectName}</li>
+			<li style={{listStyle: "none", textAlign: "center"}}>{props.iconName}</li>
 		</div>
 	)
 }

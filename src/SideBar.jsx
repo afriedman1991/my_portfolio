@@ -18,7 +18,7 @@ const SideBar = function(props) {
 				return <Icon key={i} 
 				showModal={props.showModal} 
 				iconSrc={icon.source} 
-				projectName={icon.projectName} 
+				iconName={icon.iconName} 
 				description={icon.description}
 				icon={icon}
 			/>})}
