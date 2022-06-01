@@ -52,7 +52,9 @@ const MenuBar = (props) => {
 		<div style={styles.MenuBarContainer}>
 		<div style={styles.MenuBarLeft}>
 			<img alt="" style={styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
-			<p style={{color: "white", paddingLeft: "1vw", fontSize: "24px", fontFamily: "Space Mono"}}>Alex Friedman</p>
+			<p style={{color: "white", paddingLeft: "1vw", fontSize: "24px", fontFamily: "Space Mono"}}>
+				Alex Friedman
+			</p>
 		</div>
 			<div style={styles.MenuBarRight}>
 				{props.iconList.map((icon, i) =>{

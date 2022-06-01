@@ -112,7 +112,7 @@ const Modal = function(props) {
 					}) : <p style={styles.textStyle}>
 							{props.description}
 							{console.log("props:", props.url)}
-							<a href={props.url}>{props.modalName}</a>
+							<a href={props.url} target="_blank">{props.modalName}</a>
 						</p>}
 				</div>
 			</div>
