@@ -1,10 +1,10 @@
 import './App.css';
 import React, {useEffect, useState}/*, useEffect, useContext}*/ from 'react';
-import Scavengers_Icon from './Scavengers_Icon.png';
-import BAM_Icon from './Icon-1024.png'
+import Scavengers_Icon from './Icons/Scavengers_Icon.png';
+import BAM_Icon from './Icons/Icon-1024.png'
 import SideBar from './SideBar.jsx';
 import Modal from './Modal.jsx';
-
+import MenuBar from './MenuBar.jsx';
 
 
 const icons = [
@@ -69,10 +69,15 @@ const icons = [
   },
   {
     id: 3,
-    iconName: "Contact Me",
+    iconName: "Connect",
     source: "https://cdn-icons-png.flaticon.com/512/561/561127.png",
     description: "",
     content: [
+      {
+        name: "Email",
+        src: "https://cdn-icons-png.flaticon.com/512/561/561127.png",
+        url: "afriedman1991@gmail.com"
+      },
       {
         name: "LinkedIn",
         src: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
@@ -106,7 +111,8 @@ function App() {
     setModal(<></>);
   }
   return (
-    <div style={{display: "flex"}}>
+    <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+      <MenuBar iconList={icons[3].content} />
       <SideBar iconList={icons} showModal={showModal}/>
       {modal}
     </div>

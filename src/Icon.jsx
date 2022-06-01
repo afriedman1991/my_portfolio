@@ -1,27 +1,59 @@
 import React, {useState} from 'react';
-import Modal from './Modal.jsx';
+
 const styles = {
   icon: {
-    display: "flex",
-    width: "4vw",
+	  display: "flex",
+	  width: "3.5vw",
+	  translateY: "0px",
+	  transition: "0.225s",
+	  borderRadius: "16px",
+  },
+  menuBarIcons: {
+	  display: "flex",
+	  width: "1.5vw",
+	  backgroundColor: "white",
+	  borderRadius: "50%",
+	  padding: ".2vw",
+  },
+  iconHover: {
+	  width: "7vw",
+	  marginLeft: "50px",
+	  transition: "0.225s",
+	  borderRadius: "32px",
   },
   iconContainer: {
-    display: "flex",
-	flexDirection: "column",
-	alignItems: "center",
-	justifyContent: "center",
-	padding: "2vw",
+	  display: "flex",
+	  flexDirection: "column",
+	  alignItems: "center",
+	  justifyContent: "center",
+	  padding: "1vw",
+	  width: "50px",
+	  height: "50px",
+	  transition: "0.225s",
+  },
+  containerHover: {
+	  display: "flex",
+	  flexDirection: "column",
+	  alignItems: "center",
+	  justifyContent: "center",
+	  padding: "1vw",
+	  margin: "13px 0 13px 0",
+	  transition: "0.225s",
   },
 }
 const Icon = function(props) {
+	const [iconStyle, setIconStyle] = useState(styles.icon);
 
 	return (
-		<div style={styles.iconContainer}>
-			{/* {console.log("props.icon:", props.icon)} */}
-			<img onClick={() => {
+		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}
+		onMouseLeave={props.iconStyle ? (e) => setIconStyle(styles.icon) : null} 
+		onMouseOver={props.iconStyle ? (e) => setIconStyle(styles.iconHover) : null}>
+		{props.className === "menuBar" ? <a href={props.icon.url} target="_blank"><img style={styles.menuBarIcons} alt="" src={props.iconSrc} /></a> : 
+			<img 
+			onClick={() => {
 				return props.showModal ? props.showModal(props.icon) : null;
-			}} style={styles.icon} alt="" src={props.iconSrc} />
-			<li style={{listStyle: "none", textAlign: "center"}}>{props.iconName}</li>
+			}} style={iconStyle} alt="" src={props.iconSrc} />}
+			{/* <li style={{listStyle: "none", textAlign: "center", overflow: "hidden", textOverflow: "ellipses", width: "90px"}}></li> */}
 		</div>
 	)
 }

@@ -6,7 +6,9 @@ const styles = {
 		display:"flex",
 		width:"75vw",
 		height: "75vh",
-		outline: "solid red",
+		backgroundColor: "white",
+		borderRadius: "16px",
+		overflow: "hidden",
 	},
 	modalContent: {
 		display: "flex",
@@ -24,12 +26,31 @@ const styles = {
 		height: "100vh",
 		width: "100vw",
 	},
+	modalTitleBar: {
+		position: "absolute",
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "left",
+		alignItems: "center",
+		width: "100%",
+		height: "7vh",
+		borderBottom: "2px solid black",
+		backgroundColor: "#696969",
+		borderRadius: "14px 14px 0px 0px"
+	},
+	titleBarContent: {
+		fontWeight: "bold",
+		fontSize: "24px",
+		color: "white",
+		fontFamily: "Space Mono",
+	},
 	textStyle: {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "left",
 		alignItems: "flex-start",
 		overflowWrap: "normal",
+		fontFamily: "Poppins",
 		"&#contactInfo": {
 			listStyle: "none",
 			justifyContent: "left",
@@ -52,20 +73,29 @@ const Modal = function(props) {
 	return (
 		<div style={styles.modalContainer}>
 			<div style={styles.modal}>
-				<div style={styles.modalContent}>
+				<div style={styles.modalTitleBar}>
 					<Icon iconSrc={props.iconSrc} projectName={props.projectName} />
+					<div style={styles.titleBarContent}>{props.modalName}</div>
+					<img
+						onClick={props.closeModal} 
+						style={styles.closeButtonStyle} 
+						src="https://cdn-icons-png.flaticon.com/512/1632/1632708.png"
+						alt=""
+					/>
+				</div>
+				<div style={styles.modalContent}>
 					{props.content ? props.content.map(role => {
-						if (props.modalName === "Contact Me") {
+						if (props.modalName === "Connect") {
 							return (
 								<div id="contactInfo" style={styles.textStyle}>
-									<a href={role.url}><Icon iconSrc={role.src} projectName={""} /></a>
+									<a href={role.url} target="_blank"><Icon iconSrc={role.src} projectName={""} /></a>
 								</div>
 							)
 						} else {
 							const description = role.roleDescription;
 							return (
 								<div style={styles.textStyle}>
-									<h3>{`${role.title} | ${role.company} | ${role.location} | ${role.timeline}`}</h3>
+									<h3 style={{fontFamily: "Space Mono"}}>{`${role.title} | ${role.company} | ${role.location} | ${role.timeline}`}</h3>
 									<br />
 									<ul>
 										<li>{description.first}</li>
@@ -85,12 +115,6 @@ const Modal = function(props) {
 							<a href={props.url}>{props.modalName}</a>
 						</p>}
 				</div>
-				<img
-					onClick={props.closeModal} 
-					style={styles.closeButtonStyle} 
-					src="https://cdn-icons-png.flaticon.com/512/1632/1632708.png"
-					alt=""
-				/>
 			</div>
 		</div>
 	)
