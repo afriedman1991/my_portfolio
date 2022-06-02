@@ -27,8 +27,11 @@ const styles = {
 		background: "transparent",
 	},
 	MenuBarDateTime: {
-		paddingRight: "2vw",
-		paddingLeft: "2vw",
+		display: "flex",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginRight: "2vw",
+		width: "11.5vw",
 		color: "white",
 		fontFamily: "Space Mono"
 	},
@@ -50,12 +53,12 @@ const MenuBar = (props) => {
 
 	return (
 		<div style={styles.MenuBarContainer}>
-		<div style={styles.MenuBarLeft}>
-			<img alt="" style={styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
-			<p style={{color: "white", paddingLeft: "1vw", fontSize: "24px", fontFamily: "Space Mono"}}>
-				Alex Friedman
-			</p>
-		</div>
+			<div style={styles.MenuBarLeft}>
+				<img alt="" style={styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
+				<p style={{color: "white", paddingLeft: "1vw", fontSize: "24px", fontFamily: "Space Mono"}}>
+					Alex Friedman
+				</p>
+			</div>
 			<div style={styles.MenuBarRight}>
 				{props.iconList.map((icon, i) =>{
 					return <Icon
@@ -64,8 +67,10 @@ const MenuBar = (props) => {
 					icon={icon}
 					className="menuBar"
 				/>})}
-				<div style={styles.MenuBarDateTime}>{getCurrentDate()}</div>
-				<Clock style={styles.MenuBarDateTime} format={'h:mm a'} ticking={true} />
+				<div style={styles.MenuBarDateTime}>
+					<div >{getCurrentDate()}</div>
+					<Clock format={'h:mm a'} ticking={true} />
+				</div>
 			</div>
 		</div>
 	)

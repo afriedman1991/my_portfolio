@@ -9,19 +9,11 @@ import MenuBar from './MenuBar.jsx';
 
 const icons = [
   {
-    id: 0,
-    iconName: "Rogue Apocalypse",
-    source: Scavengers_Icon,
-    description: "Rogue Apocalypse is a roguelike dungeon crawler game I created using the Unity Engine, and C#. The goal of the game is to make it to the exit without running out of food points or getting attacked by enemies. The player loses one food point for each move they make, and 10/20 food points when attacked by an enemy. Food points can be replenished by picking up food and soda items through out each level. All levels in this game are procedurally generated and infinitely running until the player runs out of food points. You can check it out by clicking on the following link: ",
-    url: "https://afriedman1991.itch.io/rogue-apocalypse",
-    content: "",
-  },
-  {
     id: 1,
-    iconName: "Black and Mobile",
-    source: BAM_Icon,
-    description: "Black and Mobile is a food delivery service application that supports Black-Owned Businesses by giving them exposure and new customers through their mobile interface. I utilized React.js and Cordova to create mobile builds for deployment and testing using AppStoreConnect and TestFlight. I also implemented several features including a rating system, filter by cuisine, order history and summary, and used the Stripe billing api to allow for gift card creation and redemption. You can check out this delicious app using the following link: ",
-    url: "https://apps.apple.com/us/app/black-and-mobile/id1481173159",
+    iconName: "reach out!",
+    source: "https://art.pixilart.com/sr20e13a17053e2.png",
+    description: "I'm a software engineer specializing in full stack development with 3 years of experience using technologies like JavaScript, React, Stripe, Firebase, Xcode, AWS, Google Cloud, Unity, and C#. I'm always looking for interesting new tech to learn, and enjoy finding creative ways to use them. Although my experience leans heavily on React development, I'm also a passionate gamer and game developer. I love building games as much as I love to play them. My inspiration comes from seeing how people use tech to create fun, practical, innovative, or even weird experiences. I hope to someday use everything I learn to start a game development studio, it's my goal and passion to create fun, engaging, and memorable experiences for gamers and non-gamers alike. I also built this website myself using React, and css. If you're interested in working with me, I encourage you to ",
+    url: "",
     content: "",
   },
   {
@@ -90,6 +82,22 @@ const icons = [
       }
     ]
   },
+  {
+    id: 4,
+    iconName: "Rogue Apocalypse",
+    source: Scavengers_Icon,
+    description: "Rogue Apocalypse is a roguelike dungeon crawler game I created using the Unity Engine, and C#. The goal of the game is to make it to the exit without running out of food points or getting attacked by enemies. The player loses one food point for each move they make, and 10/20 food points when attacked by an enemy. Food points can be replenished by picking up food and soda items through out each level. All levels in this game are procedurally generated and infinitely running until the player runs out of food points. You can check it out by clicking on the following link: ",
+    url: "https://afriedman1991.itch.io/rogue-apocalypse",
+    content: "",
+  },
+  {
+    id: 5,
+    iconName: "Black and Mobile",
+    source: BAM_Icon,
+    description: "Black and Mobile is a food delivery service application that supports Black-Owned Businesses by giving them exposure and new customers through their mobile interface. I utilized React.js and Cordova to create mobile builds for deployment and testing using AppStoreConnect and TestFlight. I also implemented several features including a rating system, filter by cuisine, order history and summary, and used the Stripe billing api to allow for gift card creation and redemption. You can check out this delicious app using the following link: ",
+    url: "https://apps.apple.com/us/app/black-and-mobile/id1481173159",
+    content: "",
+  },
 ];
 
 function App() {
@@ -99,7 +107,7 @@ function App() {
 	  const newModal = <Modal 
         iconSrc={icon.source} 
         modalName={icon.iconName} 
-        description={icon.description} 
+        description={icon.description}
         content={icon.content}
         url={icon.url}
         closeModal={closeModal}
@@ -112,8 +120,8 @@ function App() {
   }
   return (
     <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
-      <MenuBar iconList={icons[3].content} />
-      <SideBar iconList={icons} showModal={showModal}/>
+      <MenuBar iconList={icons[2].content} />
+      <SideBar iconList={icons} showModal={showModal} />
       {modal}
     </div>
   );

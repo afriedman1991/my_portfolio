@@ -51,11 +51,15 @@ const styles = {
 		alignItems: "flex-start",
 		overflowWrap: "normal",
 		fontFamily: "Poppins",
+		projectLinks: {
+			fontFamily: "Poppins",
+		},
 		"&#contactInfo": {
 			listStyle: "none",
-			justifyContent: "left",
+			justifyContent: "space-evenly",
 			alignItems: "flex-start",
-		}
+			height: "100vh",
+		},
 	},
 	closeButtonStyle: {
 		display: "flex",
@@ -88,7 +92,8 @@ const Modal = function(props) {
 						if (props.modalName === "Connect") {
 							return (
 								<div id="contactInfo" style={styles.textStyle}>
-									<a href={role.url} target="_blank"><Icon iconSrc={role.src} projectName={""} /></a>
+									<a href={role.name === "Email" ? "mailto:afriedman1991@gmail.com" : role.url} target="_blank"><Icon iconSrc={role.src} projectName={""}/></a>
+									<p>{role.url === "afriedman1991@gmail.com" ? role.url : ""}</p>
 								</div>
 							)
 						} else {
@@ -109,7 +114,7 @@ const Modal = function(props) {
 								</div>
 							)
 						}
-					}) : <p style={styles.textStyle}>
+					}) : <p id="projectLinks" style={styles.textStyle.projectLinks}>
 							{props.description}
 							{console.log("props:", props.url)}
 							<a href={props.url} target="_blank">{props.modalName}</a>
