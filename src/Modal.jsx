@@ -117,7 +117,7 @@ const Modal = function(props) {
 					}) : <p id="projectLinks" style={styles.textStyle.projectLinks}>
 							{props.description}
 							{console.log("props:", props.url)}
-							<a href={props.url} target="_blank">{props.url}</a>
+							<a href={props.url} target="_blank">{props.iconName}</a>
 						</p>}
 				</div>
 			</div>
