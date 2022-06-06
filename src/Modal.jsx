@@ -88,7 +88,7 @@ const Modal = function(props) {
 					/>
 				</div>
 				<div style={styles.modalContent}>
-					{props.content ? props.content.map(role => {
+					{props.content ? props.content.map((role, ind) => {
 						if (props.modalName === "Connect") {
 							return (
 								<div id="contactInfo" style={styles.textStyle}>

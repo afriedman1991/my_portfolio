@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect, useState}/*, useEffect, useContext}*/ from 'react';
+import React, {useState} from 'react';
 import Scavengers_Icon from './Icons/Scavengers_Icon.png';
 import BAM_Icon from './Icons/Icon-1024.png'
 import Me from './Icons/Me.png';
