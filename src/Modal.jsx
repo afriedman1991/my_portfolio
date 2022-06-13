@@ -1,6 +1,21 @@
 import Icon from './Icon.jsx';
 
 const styles = {
+	modalContainer: {
+		display:"flex",
+		justifyContent: "center",
+		alignItems: "center",
+		height: "100vh",
+		width: "100vw",
+	},
+	mobileModalContainer: {
+		position: "absolute",
+		display:"flex",
+		justifyContent: "center",
+		alignItems: "center",
+		height: "auto",
+		width: "100vw",
+	},
 	modal: {
 		position: "relative",
 		display:"flex",
@@ -9,6 +24,12 @@ const styles = {
 		backgroundColor: "white",
 		borderRadius: "16px",
 		overflow: "hidden",
+	},
+	mobileModal: {
+		display: "flex",
+		backgroundColor: "white",
+		width: "100vw",
+		height: "88.5vh",
 	},
 	modalContent: {
 		display: "flex",
@@ -19,12 +40,14 @@ const styles = {
 		width: "100vw",
 		overflowY: "auto",
 	},
-	modalContainer: {
-		display:"flex",
-		justifyContent: "center",
-		alignItems: "center",
-		height: "100vh",
+	mobileModalContent: {
+		display: "flex",
+		flexDirection: "column",
+		padding:"5rem 2rem 5rem 2rem",
+		justifyContent: "left",
+		alignItems: "flex-start",
 		width: "100vw",
+		overflowY: "auto",
 	},
 	modalTitleBar: {
 		position: "absolute",
@@ -74,9 +97,11 @@ const styles = {
 }
 
 const Modal = function(props) {
+	// console.log("modal is mobile?", props.isMobile)
+	// console.log(styles.mobileModalContainer)
 	return (
-		<div style={styles.modalContainer}>
-			<div style={styles.modal}>
+		<div className="modalContainer" style={props.isMobile ? styles.mobileModalContainer : styles.modalContainer}>
+			<div style={props.isMobile ? styles.mobileModal : styles.modal}>
 				<div style={styles.modalTitleBar}>
 					<Icon iconSrc={props.iconSrc} projectName={props.projectName} />
 					<div style={styles.titleBarContent}>{props.modalName}</div>
@@ -87,13 +112,12 @@ const Modal = function(props) {
 						alt=""
 					/>
 				</div>
-				<div style={styles.modalContent}>
+				<div className="ModalContent" style={props.isMobile ? styles.mobileModalContent : styles.modalContent}>
 					{props.content ? props.content.map((role, ind) => {
 						if (props.modalName === "Connect") {
 							return (
 								<div id="contactInfo" style={styles.textStyle}>
-									<a href={role.name === "Email" ? "mailto:afriedman1991@gmail.com" : role.url} target="_blank"><Icon iconSrc={role.src} projectName={""}/></a>
-									<p>{role.url === "afriedman1991@gmail.com" ? role.url : ""}</p>
+									<a href={role.name === "Email" ? "mailto:afriedman1991@gmail.com" : role.url} target="_blank"><Icon className="contactInfo" iconSrc={role.src} projectName={""}/></a>
 								</div>
 							)
 						} else {

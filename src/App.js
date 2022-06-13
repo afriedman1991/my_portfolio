@@ -6,6 +6,7 @@ import Me from './Icons/Me.png';
 import SideBar from './SideBar.jsx';
 import Modal from './Modal.jsx';
 import MenuBar from './MenuBar.jsx';
+import Icon from './Icon.jsx';
 
 
 const icons = [
@@ -101,6 +102,15 @@ const icons = [
   },
 ];
 
+const iconContainerStyles = {
+  display: "flex",
+  flexDirection: "row",
+  height: "100vh",
+  justifyContent: "space-evenly",
+  alignItems: "flex-start",
+  paddingTop: "10vh",
+}
+
 function App() {
 	const [modal, setModal] = useState(<></>);
   const [width, setWidth] = useState(window.innerWidth);
@@ -126,6 +136,7 @@ function App() {
         content={icon.content}
         url={icon.url}
         closeModal={closeModal}
+        isMobile={isMobile}
       />;
 
 	  setModal(newModal);
@@ -133,10 +144,23 @@ function App() {
   const closeModal = () => {
     setModal(<></>);
   }
+  const GenerateAppIcons = () => {
+
+  }
   return (
     <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
-      {/* <MenuBar isMobile={isMobile} iconList={icons[2].content} /> */}
+      <MenuBar isMobile={isMobile} iconList={icons[2].content} />
       <SideBar isMobile={isMobile} iconList={icons} showModal={showModal} />
+      <div className="iconContainer" style={iconContainerStyles}>
+      	{isMobile ? icons[2].content.map((icon, i) =>{
+					return <Icon
+					key={i}
+					iconSrc={icon.src} 
+					icon={icon}
+					className="mobileDock"
+          isMobile={isMobile}
+				/>}) : <></>}
+      </div>
       {modal}
     </div>
   );

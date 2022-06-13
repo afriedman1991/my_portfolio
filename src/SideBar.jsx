@@ -45,6 +45,7 @@ const styles = {
 		marginBottom: "1vh",
 	},
 	mobileSideBarContainer: {
+		position: "absolute",
 		display: "flex",
 		flexDirection: "row",
 		alignItems: "flex-end",
@@ -59,7 +60,7 @@ const SideBar = function(props) {
 	const [iconStyle, setIconStyle] = useState(false);
 
 	return (
-		<div style={props.isMobile ? styles.mobileSideBarContainer : styles.SideBarContainer}>
+		<div className="sideBar" style={props.isMobile ? styles.mobileSideBarContainer : styles.SideBarContainer}>
 			<div
 			onMouseEnter={() => {
 				setIconContainerStyle(true);
