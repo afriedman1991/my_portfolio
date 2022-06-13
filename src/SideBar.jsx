@@ -27,6 +27,31 @@ const styles = {
 		width: "auto",
 		height: "100vh",
 	},
+	mobileSideBar: {
+		position: "relative",
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-evenly",
+		alignItems: "center",
+		width: "100vw",
+		height: "10vh",
+		maxWidth: "95vw",
+		maxHeight: "10vh",
+		borderRadius: "20px",
+		background: "rgba(83, 83, 83, 0.25",
+		backdropFilter: "blur(13px)",
+		WebkitBackdropFilter: "blur(13px)",
+		border: "1px solid rgba(255, 255, 255, 0.18",
+		marginBottom: "1vh",
+	},
+	mobileSideBarContainer: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "flex-end",
+		justifyContent: "center",
+		width: "100vw",
+		height: "100vh",
+	}
 };
 
 const SideBar = function(props) {
@@ -34,7 +59,7 @@ const SideBar = function(props) {
 	const [iconStyle, setIconStyle] = useState(false);
 
 	return (
-		<div style={styles.SideBarContainer}>
+		<div style={props.isMobile ? styles.mobileSideBarContainer : styles.SideBarContainer}>
 			<div
 			onMouseEnter={() => {
 				setIconContainerStyle(true);
@@ -44,9 +69,9 @@ const SideBar = function(props) {
 				setIconContainerStyle(false);
 				setIconStyle(false)
 			}}
-			style={styles.SideBar}>
+			style={props.isMobile ? styles.mobileSideBar : styles.SideBar}>
 				{props.iconList.map((icon, i) =>{
-					return <Icon key={i} 
+					return <Icon key={i}
 					showModal={props.showModal} 
 					iconSrc={icon.source} 
 					iconName={icon.iconName} 
@@ -54,6 +79,7 @@ const SideBar = function(props) {
 					icon={icon}
 					containerStyle={iconContainerStyle}
 					iconStyle={iconStyle}
+					isMobile={props.isMobile}
 				/>})}
 			</div>
 		</div>

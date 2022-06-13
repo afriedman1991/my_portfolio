@@ -8,6 +8,13 @@ const styles = {
 	  transition: "0.225s",
 	  borderRadius: "16px",
   },
+  mobileIcon: {
+	display: "flex",
+	width: "14vw",
+	translateY: "0px",
+	transition: "0.225s",
+	borderRadius: "16px",
+  },
   menuBarIcons: {
 	  display: "flex",
 	  width: "1.5vw",
@@ -61,13 +68,13 @@ const styles = {
   }
 }
 const Icon = function(props) {
-	const [iconStyle, setIconStyle] = useState(styles.icon);
+	const [iconStyle, setIconStyle] = useState(props.isMobile ? styles.mobileIcon : styles.icon);
 	const [iconNameDisplay, setIconNameDisplayStyle] = useState(styles.iconNameDisplay.hideName);
-
+	console.log("is mobile?", props.isMobile);
 	return (
 		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}
 		onMouseLeave={props.iconStyle ? () => {
-			setIconStyle(styles.icon)
+			setIconStyle(props.isMobile ? styles.mobileIcon : styles.icon)
 			setIconNameDisplayStyle(styles.iconNameDisplay.hideName);
 		} : null} 
 		onMouseOver={props.iconStyle ? () => {
@@ -78,7 +85,7 @@ const Icon = function(props) {
 			<img 
 			onClick={() => {
 				return props.showModal ? props.showModal(props.icon) : null;
-			}} style={iconStyle} alt="" src={props.iconSrc} />}
+			}} style={props.isMobile ? styles.mobileIcon : iconStyle} alt="" src={props.iconSrc} />}
 			<div style={iconNameDisplay}>{props.iconName}</div>
 		</div>
 	)

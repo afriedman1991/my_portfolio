@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Scavengers_Icon from './Icons/Scavengers_Icon.png';
 import BAM_Icon from './Icons/Icon-1024.png'
 import Me from './Icons/Me.png';
@@ -13,7 +13,7 @@ const icons = [
     id: 1,
     iconName: "About Me",
     source: Me,
-    description: "I'm a software engineer specializing in full stack development with 3 years of experience using technologies like JavaScript, React, Stripe, Firebase, Xcode, AWS, Google Cloud, Unity, and C#. I'm always looking for interesting new tech to learn, and enjoy finding creative ways to use them. Although my experience leans heavily on React development, I'm also a passionate gamer and game developer. I love building games as much as I love to play them. My inspiration comes from seeing how people use tech to create fun, practical, innovative, or even weird experiences. I hope to someday use everything I learn to start a game development studio, it's my goal and passion to create fun, engaging, and memorable experiences for gamers and non-gamers alike. If you're interested in working with me, I encourage you to ",
+    description: "I'm a software engineer specializing in full stack development with experience using technologies like JavaScript, React, Node, Stripe, Firebase, Xcode, AWS, Google Cloud, Unity, and C#. I'm always looking for interesting new tech to learn, and enjoy finding creative ways to use them. Although my experience leans heavily on React development, I'm also a passionate gamer and game developer. I love building games as much as I love to play them. My inspiration comes from seeing how people use tech to create fun, practical, innovative, or even weird experiences. I hope to someday use everything I learn to start a game development studio, it's my goal and passion to create fun, engaging, and memorable experiences for gamers and non-gamers alike. If you're interested in working with me, I encourage you to ",
     url: "reach out!",
     content: "",
   },
@@ -103,6 +103,20 @@ const icons = [
 
 function App() {
 	const [modal, setModal] = useState(<></>);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, [])
+
+  const isMobile = width <= 768;
 
 	const showModal = (icon) => {
 	  const newModal = <Modal 
@@ -121,8 +135,8 @@ function App() {
   }
   return (
     <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
-      <MenuBar iconList={icons[2].content} />
-      <SideBar iconList={icons} showModal={showModal} />
+      {/* <MenuBar isMobile={isMobile} iconList={icons[2].content} /> */}
+      <SideBar isMobile={isMobile} iconList={icons} showModal={showModal} />
       {modal}
     </div>
   );
