@@ -1,98 +1,21 @@
 import React, {useState} from 'react';
+import Styles from './Styles.js';
 
-const styles = {
-  icon: {
-	  display: "flex",
-	  width: "3.5vw",
-	  translateY: "0px",
-	  transition: "0.225s",
-	  borderRadius: "16px",
-  },
-  mobileIcon: {
-	display: "flex",
-	width: "14vw",
-	translateY: "0px",
-	transition: "0.225s",
-	borderRadius: "16px",
-  },
-  menuBarIcons: {
-	  display: "flex",
-	  width: "1.5vw",
-	  backgroundColor: "white",
-	  borderRadius: "50%",
-	  padding: ".2vw",
-  },
-  mobileMenuBarIcons: {
-	position: "absolute",
-	display: "flex",
-	width: "13.5vw",
-	backgroundColor: "white",
-	borderRadius: "25%",
-	padding: ".2vw",
-  },
-  iconHover: {
-	  width: "7vw",
-	  marginLeft: "50px",
-	  transition: "0.225s",
-	  borderRadius: "32px",
-  },
-  iconContainer: {
-	  display: "flex",
-	  flexDirection: "column",
-	  alignItems: "center",
-	  justifyContent: "center",
-	  padding: "1vw",
-	  width: "50px",
-	  height: "50px",
-	  transition: "0.225s",
-  },
-  mobileIconContainer: {
-	width: "15vw",
-	height: "6.5vh",
-	marginLeft: "10vw",
-  },
-  containerHover: {
-	  display: "flex",
-	  flexDirection: "column",
-	  alignItems: "center",
-	  justifyContent: "center",
-	  padding: "1vw",
-	  margin: "5px 0 5px 0",
-	  transition: "0.225s",
-  },
-  iconNameDisplay: {
-	  position: "absolute",
-	  display: "flex",
-	  flexDirection: "row",
-	  marginLeft: "300px",
-	  justifyContent: "center",
-	  alignItems: "center",
-	  background: "rgba(0, 0, 0, 0.5)",
-	  color: "rgba(255, 255, 255, 0.9)",
-	  padding: "8px",
-	  width: "100%",
-	  backDropFilter: "blur(13px)",
-	  WebkitBackdropFilter: "blur(13px)",
-	  borderRadius: "5px",
-	  fontFamily: "Poppins",
-	  hideName: {
-		  display: "none",
-	  }
-  }
-}
+
 const Icon = function(props) {
+	const styles = props.isMobile ? Styles.MobileStyles.Icon : Styles.Icon;
 	const [iconStyle, setIconStyle] = useState(styles.icon);
 	const [iconNameDisplay, setIconNameDisplayStyle] = useState(styles.iconNameDisplay.hideName);
 	console.log("is mobile?", props.className);
 	return (
 		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}
-		onMouseLeave={props.iconStyle ? () => {
+		onMouseLeave={props.iconStyle && !props.isMobile ? () => {
 			setIconStyle(styles.icon)
 			setIconNameDisplayStyle(styles.iconNameDisplay.hideName);
 		} : null} 
-		onMouseOver={props.iconStyle ? () => {
+		onMouseOver={props.iconStyle && !props.isMobile ? () => {
 			setIconStyle(styles.iconHover)
-			setIconNameDisplayStyle(styles.iconNameDisplay);
+			setIconNameDisplayStyle(props.isMobile ? {} : styles.iconNameDisplay);
 		} : null}>
 		{props.className === "menuBar" ? <a href={props.icon.name === "Email" ? "mailto:afriedman1991@gmail.com" : props.icon.url} target="_blank"><img style={styles.menuBarIcons} alt="" src={props.iconSrc} /></a> : 
 			<img 

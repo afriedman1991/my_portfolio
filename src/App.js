@@ -7,6 +7,7 @@ import SideBar from './SideBar.jsx';
 import Modal from './Modal.jsx';
 import MenuBar from './MenuBar.jsx';
 import Icon from './Icon.jsx';
+import Styles from './Styles.js';
 
 
 const icons = [
@@ -102,13 +103,49 @@ const icons = [
   },
 ];
 
+const mobileHomeScreenIcons = [
+  {
+    id: 5,
+    iconName: "Black and Mobile",
+    src: BAM_Icon,
+    description: "Black and Mobile is a food delivery service application that supports Black-Owned Businesses by giving them exposure and new customers through their mobile interface. I utilized React.js and Cordova to create mobile builds for deployment and testing using AppStoreConnect and TestFlight. I also implemented several features including a rating system, filter by cuisine, order history and summary, and used the Stripe billing api to allow for gift card creation and redemption. You can check out this delicious app using the following link: ",
+    url: "https://apps.apple.com/us/app/black-and-mobile/id1481173159",
+    content: "",
+  },
+  {
+    name: "Email",
+    src: "https://cdn-icons-png.flaticon.com/512/561/561127.png",
+    url: "afriedman1991@gmail.com"
+  },
+  {
+    name: "LinkedIn",
+    src: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
+    url: "https://www.linkedin.com/in/afriedman1991",
+  },
+  {
+    name: "github",
+    src: "https://cdn-icons-png.flaticon.com/512/733/733609.png",
+    url: "https://www.github.com/afriedman1991",
+  }
+]
+
 const iconContainerStyles = {
+  position: "absolute",
   display: "flex",
   flexDirection: "row",
-  height: "100vh",
+  height: "25vh",
+  width: "100vw",
   justifyContent: "space-evenly",
-  alignItems: "flex-start",
-  paddingTop: "10vh",
+  alignItems: "flex-end",
+}
+
+const iconBackground = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "white",
+  padding: "5px",
+  borderRadius: "10px",
 }
 
 function App() {
@@ -129,7 +166,8 @@ function App() {
   const isMobile = width <= 768;
 
 	const showModal = (icon) => {
-	  const newModal = <Modal 
+	  const newModal = <Modal
+        styles={isMobile ? Styles.MobileStyles.Modal : Styles.Modal}
         iconSrc={icon.source} 
         modalName={icon.iconName} 
         description={icon.description}
@@ -149,18 +187,18 @@ function App() {
   }
   return (
     <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
-      <MenuBar isMobile={isMobile} iconList={icons[2].content} />
-      <SideBar isMobile={isMobile} iconList={icons} showModal={showModal} />
-      {/* <div className="iconContainer" style={iconContainerStyles}> */}
-      	{/* {isMobile ? icons[2].content.map((icon, i) =>{
-					return <Icon
-					key={i}
-					iconSrc={icon.src} 
-					icon={icon}
-					className="mobileDock"
+      <MenuBar styles={isMobile ? Styles.MobileStyles.MenuBar : Styles.MenuBar} isMobile={isMobile} iconList={icons[2].content} />
+      <SideBar styles={isMobile ? Styles.MobileStyles.SideBar : Styles.SideBar} isMobile={isMobile} iconList={icons} showModal={showModal} />
+      <div className="iconContainer" style={iconContainerStyles}>
+        {isMobile ? mobileHomeScreenIcons.map((icon, i) =>{
+          return <div style={iconBackground}><Icon
+          key={i}
+          iconSrc={icon.src} 
+          icon={icon}
+          className="mobileDock"
           isMobile={isMobile}
-				/>}) : <></>} */}
-      {/* </div> */}
+        /></div>}) : <></>}
+      </div>
       {modal}
     </div>
   );
