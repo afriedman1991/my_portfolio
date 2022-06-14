@@ -101,14 +101,14 @@ const MenuBar = (props) => {
 	}
 
 	return (
-		<div style={props.isMobile ? styles.mobileMenuBarContainer : styles.MenuBarContainer}>
-			<div className="menu-bar-left" style={props.isMobile ? styles.mobileMenuBarLeft : styles.MenuBarLeft}>
-				<img alt="" style={props.isMobile ? styles.mobileMeIcon : styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
-				<p style={props.isMobile ? styles.mobileTitle : styles.Title}>
+		<div style={styles.MenuBarContainer}>
+			<div className="menu-bar-left" style={styles.MenuBarLeft}>
+				<img alt="" style={styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
+				<p style={styles.Title}>
 					Alex Friedman
 				</p>
 			</div>
-			<div className="menu-bar-left" style={props.isMobile ? styles.mobileMenuBarRight : styles.MenuBarRight}>
+			<div className="menu-bar-left" style={styles.MenuBarRight}>
 
 				{props.isMobile ? <></> : props.iconList.map((icon, i) =>{
 					return <Icon
@@ -117,8 +117,8 @@ const MenuBar = (props) => {
 					icon={icon}
 					className="menuBar"
 				/>})}
-				<div style={props.isMobile ? styles.mobileMenuBarDateTime : styles.MenuBarDateTime}>
-					<div >{props.isMobile ? <></> : getCurrentDate()}</div>
+				<div style={styles.MenuBarDateTime}>
+					<div >{getCurrentDate()}</div>
 					<Clock format={'h:mm a'} ticking={true} />
 				</div>
 			</div>

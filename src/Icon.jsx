@@ -81,25 +81,25 @@ const styles = {
   }
 }
 const Icon = function(props) {
-	const [iconStyle, setIconStyle] = useState(props.isMobile ? styles.mobileIcon : styles.icon);
+	const [iconStyle, setIconStyle] = useState(styles.icon);
 	const [iconNameDisplay, setIconNameDisplayStyle] = useState(styles.iconNameDisplay.hideName);
 	console.log("is mobile?", props.className);
 	return (
-		<div style={props.className === "mobileDock" ? styles.mobileIconContainer : (props.containerStyle ? styles.containerHover : styles.iconContainer)}
+		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}
 		onMouseLeave={props.iconStyle ? () => {
-			setIconStyle(props.isMobile ? styles.mobileIcon : styles.icon)
+			setIconStyle(styles.icon)
 			setIconNameDisplayStyle(styles.iconNameDisplay.hideName);
 		} : null} 
 		onMouseOver={props.iconStyle ? () => {
-			setIconStyle(props.isMobile ? {} : styles.iconHover)
+			setIconStyle(styles.iconHover)
 			setIconNameDisplayStyle(styles.iconNameDisplay);
 		} : null}>
-		{props.className === "mobileDock" ? <a href={props.icon.name === "Email" ? "mailto:afriedman1991@gmail.com" : props.icon.url} target="_blank"><img style={props.isMobile ? styles.mobileMenuBarIcons : styles.menuBarIcons} alt="" src={props.iconSrc} /></a> : 
+		{props.className === "menuBar" ? <a href={props.icon.name === "Email" ? "mailto:afriedman1991@gmail.com" : props.icon.url} target="_blank"><img style={styles.menuBarIcons} alt="" src={props.iconSrc} /></a> : 
 			<img 
 			onClick={() => {
 				return props.showModal ? props.showModal(props.icon) : null;
-			}} style={props.isMobile ? styles.mobileIcon : iconStyle} alt="" src={props.iconSrc} />}
-			{props.isMobile ? <></> : <div style={iconNameDisplay}>{props.iconName}</div>}
+			}} style={iconStyle} alt="" src={props.iconSrc} />}
+			{<div style={iconNameDisplay}>{props.iconName}</div>}
 		</div>
 	)
 }

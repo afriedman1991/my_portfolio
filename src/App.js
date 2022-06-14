@@ -151,16 +151,16 @@ function App() {
     <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
       <MenuBar isMobile={isMobile} iconList={icons[2].content} />
       <SideBar isMobile={isMobile} iconList={icons} showModal={showModal} />
-      <div className="iconContainer" style={iconContainerStyles}>
-      	{isMobile ? icons[2].content.map((icon, i) =>{
+      {/* <div className="iconContainer" style={iconContainerStyles}> */}
+      	{/* {isMobile ? icons[2].content.map((icon, i) =>{
 					return <Icon
 					key={i}
 					iconSrc={icon.src} 
 					icon={icon}
 					className="mobileDock"
           isMobile={isMobile}
-				/>}) : <></>}
-      </div>
+				/>}) : <></>} */}
+      {/* </div> */}
       {modal}
     </div>
   );
