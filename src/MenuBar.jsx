@@ -1,6 +1,7 @@
 import React from 'react';
 import Clock from 'react-live-clock';
 import Icon from './Icon.jsx';
+import PixelMe from './Icons/PixelMe.png';
 
 const MenuBar = (props) => {
 
@@ -15,7 +16,7 @@ const MenuBar = (props) => {
 	return (
 		<div style={props.styles.MenuBarContainer}>
 			<div className="menu-bar-left" style={props.styles.MenuBarLeft}>
-				<img alt="" style={props.styles.MeIcon} src="https://art.pixilart.com/sr20e13a17053e2.png" />
+				<img alt="" style={props.styles.MeIcon} src={PixelMe} />
 				<p style={props.styles.Title}>
 					Alex Friedman
 				</p>

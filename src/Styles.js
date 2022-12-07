@@ -323,9 +323,7 @@ const Styles = {
 				height: "5vh",
 				width: "100vw",
 				background: "transparent",
-				marginTop: "10vh",
-			},
-			mobileMenuBarContainer: {
+				// marginTop: "10vh",
 			},
 			MenuBarRight: {
 				display: "flex",
@@ -417,7 +415,7 @@ const Styles = {
 				backdropFilter: "blur(13px)",
 				WebkitBackdropFilter: "blur(13px)",
 				border: "1px solid rgba(255, 255, 255, 0.18",
-				marginBottom: "10vh",
+				marginBottom: "1.5vh",
 			},
 			SideBarContainer: {
 				display: "flex",
@@ -425,7 +423,6 @@ const Styles = {
 				alignItems: "flex-end",
 				justifyContent: "center",
 				width: "100vw",
-				height: "100vh",
 			},
 		},
 		Modal: {

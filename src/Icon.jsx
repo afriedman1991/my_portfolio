@@ -6,7 +6,19 @@ const Icon = function(props) {
 	const styles = props.isMobile ? Styles.MobileStyles.Icon : Styles.Icon;
 	const [iconStyle, setIconStyle] = useState(styles.icon);
 	const [iconNameDisplay, setIconNameDisplayStyle] = useState(styles.iconNameDisplay.hideName);
-	console.log("is mobile?", props.className);
+
+	const handleMobileIconCheck = () => {
+		if (props.icon.name === "Email") {
+			return <a href="mailto:afriedman1991@gmail.com" target="_blank"><img style={iconStyle} alt="" src={props.iconSrc} /></a>
+		} else {
+			return <img 
+				onClick={() => {
+					console.log('Icon clicked');
+					return props.showModal ? props.showModal(props.icon) : null;
+				}} style={iconStyle} alt="" src={props.iconSrc} />
+		}
+	}
+
 	return (
 		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}
 		onMouseLeave={props.iconStyle && !props.isMobile ? () => {
@@ -20,6 +32,7 @@ const Icon = function(props) {
 		{props.className === "menuBar" ? <a href={props.icon.name === "Email" ? "mailto:afriedman1991@gmail.com" : props.icon.url} target="_blank"><img style={styles.menuBarIcons} alt="" src={props.iconSrc} /></a> : 
 			<img 
 			onClick={() => {
+				console.log('Icon clicked');
 				return props.showModal ? props.showModal(props.icon) : null;
 			}} style={iconStyle} alt="" src={props.iconSrc} />}
 			{<div style={iconNameDisplay}>{props.iconName}</div>}
@@ -28,7 +41,6 @@ const Icon = function(props) {
 }
 
 export default Icon;
-
 /**
  * 	  position: "absolute",
 	  display: "flex",

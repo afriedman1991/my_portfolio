@@ -106,7 +106,7 @@ const icons = [
 const mobileHomeScreenIcons = [
   {
     id: 5,
-    iconName: "Black and Mobile",
+    name: "Black and Mobile",
     src: BAM_Icon,
     description: "Black and Mobile is a food delivery service application that supports Black-Owned Businesses by giving them exposure and new customers through their mobile interface. I utilized React.js and Cordova to create mobile builds for deployment and testing using AppStoreConnect and TestFlight. I also implemented several features including a rating system, filter by cuisine, order history and summary, and used the Stripe billing api to allow for gift card creation and redemption. You can check out this delicious app using the following link: ",
     url: "https://apps.apple.com/us/app/black-and-mobile/id1481173159",
@@ -133,7 +133,7 @@ const iconContainerStyles = {
   position: "absolute",
   display: "flex",
   flexDirection: "row",
-  height: "25vh",
+  height: "20vh",
   width: "100vw",
   justifyContent: "space-evenly",
   alignItems: "flex-end",
@@ -182,22 +182,38 @@ function App() {
   const closeModal = () => {
     setModal(<></>);
   }
-  const GenerateAppIcons = () => {
-
-  }
+  
   return (
-    <div style={{display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+    <div style={{height: "100%", display: "flex", backgroundImage: "url('https://wallpapercave.com/wp/wp7255564.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
       <MenuBar styles={isMobile ? Styles.MobileStyles.MenuBar : Styles.MenuBar} isMobile={isMobile} iconList={icons[2].content} />
       <SideBar styles={isMobile ? Styles.MobileStyles.SideBar : Styles.SideBar} isMobile={isMobile} iconList={icons} showModal={showModal} />
-      <div className="iconContainer" style={iconContainerStyles}>
+      <div className="iconContainer" style={isMobile ? iconContainerStyles : {}}>
         {isMobile ? mobileHomeScreenIcons.map((icon, i) =>{
-          return <div style={iconBackground}><Icon
-          key={i}
-          iconSrc={icon.src} 
-          icon={icon}
-          className="mobileDock"
-          isMobile={isMobile}
-        /></div>}) : <></>}
+          if (icon.name === "Black and Mobile") {
+          return <div style={iconBackground}>
+            <Icon
+            key={i}
+            iconSrc={icon.src} 
+            icon={icon}
+            className="mobileDock"
+            isMobile={isMobile}
+            showModal={showModal}
+            />
+          </div>
+          }
+
+          if (icon.name === "Email") {
+            return <div style={iconBackground}>
+              <Icon
+              key={i}
+              iconSrc={icon.src}
+              icon={icon}
+              className="mobileDock"
+              isMobile={isMobile}
+              />
+            </div>
+          }
+          }) : <></>}
       </div>
       {modal}
     </div>
