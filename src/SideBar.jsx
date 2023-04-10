@@ -29,7 +29,6 @@ const SideBar = function(props) {
 					icon={icon}
 					containerStyle={iconContainerStyle}
 					iconStyle={iconStyle}
-					isMobile={props.isMobile}
 				/>})}
 			</div>
 		</div>

@@ -1,3 +1,5 @@
+
+
 import React, {useState} from 'react';
 import Styles from './Styles.js';
 
@@ -6,18 +8,6 @@ const Icon = function(props) {
 	const styles = props.isMobile ? Styles.MobileStyles.Icon : Styles.Icon;
 	const [iconStyle, setIconStyle] = useState(styles.icon);
 	const [iconNameDisplay, setIconNameDisplayStyle] = useState(styles.iconNameDisplay.hideName);
-
-	const handleMobileIconCheck = () => {
-		if (props.icon.name === "Email") {
-			return <a href="mailto:afriedman1991@gmail.com" target="_blank"><img style={iconStyle} alt="" src={props.iconSrc} /></a>
-		} else {
-			return <img 
-				onClick={() => {
-					console.log('Icon clicked');
-					return props.showModal ? props.showModal(props.icon) : null;
-				}} style={iconStyle} alt="" src={props.iconSrc} />
-		}
-	}
 
 	return (
 		<div style={props.containerStyle ? styles.containerHover : styles.iconContainer}

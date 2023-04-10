@@ -1,8 +1,6 @@
 import Icon from './Icon.jsx';
 
 const Modal = function(props) {
-	// console.log("modal is mobile?", props.isMobile)
-	// console.log(styles.mobileModalContainer)
 	return (
 		<div className="modalContainer" style={props.styles.modalContainer}>
 			<div style={props.styles.modal}>
@@ -45,7 +43,7 @@ const Modal = function(props) {
 					}) : <p id="projectLinks" style={props.styles.textStyle.projectLinks}>
 							{props.description}
 							{console.log("props:", props.url)}
-							<a href="mailto:afriedman1991@gmail.com" target="_blank">{props.url}</a>
+							<a href={props.url} target="_blank">{props.url}</a>
 						</p>}
 				</div>
 			</div>
